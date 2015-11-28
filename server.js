@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 app.post('/',function(req,res) {
 	//console.log(req.body);
 	var restaurantSchema = require('./models/restaurant');
-	mongoose.connect('mongodb://localhost/test');
+	mongoose.connect('mongodb://abc123:123456@ds054298.mongolab.com:54298/test001');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
@@ -45,7 +45,7 @@ app.post('/',function(req,res) {
 
 app.delete('/restaurant_id/:id',function(req,res) {
 	var restaurantSchema = require('./models/restaurant');
-	mongoose.connect('mongodb://localhost/test');
+	mongoose.connect('mongodb://abc123:123456@ds054298.mongolab.com:54298/test001');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
@@ -64,7 +64,7 @@ app.delete('/restaurant_id/:id',function(req,res) {
 
 app.get('/restaurant_id/:id', function(req,res) {
 	var restaurantSchema = require('./models/restaurant');
-	mongoose.connect('mongodb://localhost/test');
+	mongoose.connect('mongodb://abc123:123456@ds054298.mongolab.com:54298/test001');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
@@ -87,7 +87,7 @@ app.get('/restaurant_id/:id', function(req,res) {
 
 app.put('/restaurant_id/:id/name/:attribute_values',function(req,res) {
 	var restaurantSchema = require('./models/restaurant');
-	mongoose.connect('mongodb://localhost/test');
+	mongoose.connect('mongodb://abc123:123456@ds054298.mongolab.com:54298/test001');
 	var db = mongoose.connection;
 	db.on('error', console.error.bind(console, 'connection error:'));
 	db.once('open', function (callback) {
