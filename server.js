@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var mongodbURL = 'mongodb://abc123:123456@ds054308.mongolab.com:54308/test001';
+var mongodbURL = 'mongodb://abc123:123456@ds054298.mongolab.com:54298/test001';
 var mongoose = require('mongoose');
 
 app.post('/',function(req,res) {
