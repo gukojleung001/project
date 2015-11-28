@@ -5,7 +5,7 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-var mongodbURL = 'mongodb://gukojleung001:a702086123@ds054308.mongolab.com:54308/test001';
+var mongodbURL = 'mongodb://abc123:123456@ds054308.mongolab.com:54308/test001';
 var mongoose = require('mongoose');
 
 app.post('/',function(req,res) {
@@ -108,6 +108,6 @@ app.put('/restaurant_id/:id/name/:attribute_values',function(req,res) {
     });
 });
 
-curl -X POST http://cloud001.azurewebsites.net/ --data "name=xxx&building=xxx&street=xxx&zipcode=xxx&lon=100&lat=100&borough=xxx&cuisine=xxx&restaurant_id=xxxxxxxx"
+
 
 app.listen(process.env.PORT || 8099);
