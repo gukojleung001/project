@@ -28,7 +28,7 @@ app.post('/',function(req,res) {
 		rObj.name = req.body.name;
 		rObj.restaurant_id = req.body.restaurant_id;
 
-		var Restaurant = mongoose.model('Restaurant', restaurantSchema);
+		var Restaurant = mongoose.model('Restaurant001', restaurantSchema);
 		var r = new Restaurant(rObj);
 		//console.log(r);
 		r.save(function(err) {
@@ -81,6 +81,29 @@ app.get('/restaurant_id/:id', function(req,res) {
 				res.status(200).json({message: 'No matching document'});
 			}
 			db.close();
+    	});
+    });
+});
+
+app.put('/restaurant_id/:id/name/:attribute_values',function(req,res) {
+	var restaurantSchema = require('./models/restaurant');
+	mongoose.connect('mongodb://localhost/test');
+	var db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'connection error:'));
+	db.once('open', function (callback) {
+		var Restaurant = mongoose.model('Restaurants', restaurantSchema);
+		var check = Restaurant.findOne({restaurant_id: req.params.id});
+		var abc = {$set : { name : req.params.attribute_values}};
+		
+
+		Restaurant.update({restaurant_id: req.params.id},abc,{upsert: true},function(err) {
+       		if (err) {
+				res.status(500).json(err);
+				throw err
+			}
+       		//console.log('Restaurant removed!')
+       		db.close();
+			res.status(200).json({message: 'Update done', id: req.params.id});
     	});
     });
 });
