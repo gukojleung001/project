@@ -75,7 +75,10 @@ app.delete('/:attribute/:attribute_values',function(req,res) {
 			}
        		//console.log('Restaurant removed!')
        		db.close();
-			res.status(200).json({message: 'delete done', id: req.params.id});
+			var msg = {};
+			msg.message = 'Delete Done';
+			msg[req.params.attribute] = req.params.attribute_values;
+			res.status(200).json(msg);
     	});
     });
 });
@@ -98,7 +101,10 @@ app.get('/:field/:field_values', function(req,res) {
 				res.status(200).json(results);
 			}
 			else {
-				res.status(200).json({message: 'No matching document'});
+				var msg = {};
+				msg.message = 'No matching document';
+				msg[req.params.field] = req.params.field_values;
+				res.status(200).json(msg);
 			}
 			db.close();
     	});
@@ -212,7 +218,7 @@ app.put('/:field/:field_values/:field2',function(req,res) {
             });
 	   }
 		db.close();
-		res.status(200).json({message: 'insert done'});
+		res.status(200).json({message: 'update done'});
     	});
     });
 });
